@@ -1276,6 +1276,10 @@ public class MaterialEditText extends AppCompatEditText {
   @Override
   protected void onDraw(@NonNull Canvas canvas) {
 
+    Bitmap transparentBitmap = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
+    transparentBitmap.eraseColor(Color.TRANSPARENT);
+    canvas.setBitmap(transparentBitmap);
+    
     int startX = getScrollX() + (iconLeftBitmaps == null ? 0 : (iconOuterWidth + iconPadding)) + getPaddingLeft();
     int endX = getScrollX() + (iconRightBitmaps == null ? getWidth() : getWidth() - iconOuterWidth - iconPadding) - getPaddingRight();
     int lineStartY = getScrollY() + getHeight() - getPaddingBottom();
